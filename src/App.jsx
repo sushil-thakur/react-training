@@ -1,25 +1,41 @@
-import React from 'react';
+import React from 'react'
 
-const DisplayProduct = ({ image, title }) => {
-  return (
-    <div style={{ border: '1px solid black', padding: '1rem', textAlign: 'center' }}>
-      <img src={image} alt="Product" height={250} width={250} />
-      <h3>{title || 'No Title Available'}</h3>
-    </div>
-  );
-};
 
+const Card =(props)=>{
+    return(
+        <div style={{border:'1px solid black',padding:'1rem', width:'400px'
+            ,flexDirection:'column',display:'flex',justifyContent:'center',alignItems:'center'
+        }}> 
+            <h1>{props.name}</h1>
+            <p>{props.description}</p>
+        </div>
+    )
+}
 const App = () => {
-  const product = {
-    image: 'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBx...',
-    title: 'Sample Product'
-  };
-
+    const personList = [
+        {
+            id:1,
+        name: 'Sushil',
+        description:'he is a good',
+    },
+     {
+        id:2,
+        name: 'shirsh',
+        description:'he is a bakarchoda',
+    },
+    ];
   return (
-    <div style={{ display: 'flex', gap: '1rem' }}>
-      <DisplayProduct image={product.image} title={product.title} />
-    </div>
-  );
-};
+    <div style={{display:'flex',gap:'1rem',flexWrap:'wrap'}}>
+  
+{personList.map((item) => {
+    return (
+        <Card key={item.id} name={item.name} description={item.description} />
+    );
+})}
+        
 
-export default App;
+    </div>
+  )
+}
+
+export default App
